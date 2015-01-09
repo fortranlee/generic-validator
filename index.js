@@ -119,7 +119,7 @@
         this.valid = true;
         
         try{
-          for(var i = 0, length = fields; i < length; i++){
+          for(var i = 0, length = fields.length; i < length; i++){
             var field = fields[i];
             var value = values[field] || '';
             var config = fieldsConfig[field];
@@ -129,9 +129,9 @@
             });
             
             var breakInside = false;
-            for(var j = 0, length1 = sortedValidations; j < length1; j++){
+            for(var j = 0, length1 = sortedValidations.length; j < length1; j++){
               var validation = sortedValidations[j];
-              var expected = config[validation];
+              var expected = config.validations[validation];
               var method = methods[validation];
               var msg = getMessage(method.msg, {label: config.label, expected: expected});
               var fn = method.fn;
