@@ -191,11 +191,14 @@
         pr: 0,
         msg: '@label不能为空',
         fn: function(val, expected){
-          return val.length > 0;
+          if(expected === true){
+            return val.length > 0;
+          }
+          return true;
         }
       };
       
-      exports.min_length = {
+      exports.minLength = {
         pr: 1,
         msg: '@label的长度不能少于@expected个字符',
         fn: function(val, expected){
@@ -203,11 +206,44 @@
         }
       };
       
-      exports.max_length = {
+      exports.maxLength = {
         pr: 1,
         msg: '@label的长度不能多于@expected个字符',
         fn: function(val, expected){
           return val.length <= expected;
+        }
+      };
+      
+      exports.isNormalWord = {
+        pr: 2,
+        msg: '@label必须是字母，数字和特殊符号_，$的组合，且首位不能为数字',
+        fn: function(val, expected){
+          if(expected === true){
+            return /^[a-z_\$]{1}[_\$\w]*$/ig.test(val);
+          }
+          return true;
+        }
+      };
+      
+      exports.isCNMobile = {
+        pr: 2,
+        msg: '@label必须是合法的手机号码',
+        fn: function(val, expected){
+          if(expected === true){
+            return /^(13\d|15[0|3|6|7|8|9]|18[89])\d{8}$/g.test(val);
+          }
+          return true;
+        }
+      };
+      
+      exports.isCNMobile = {
+        pr: 2,
+        msg: '@label必须是合法的Email地址',
+        fn: function(val, expected){
+          if(expected === true){
+            return /^(?:[a-z\d]+[_\-\+\.]?)*[a-z\d]+@(?:([a-z\d]+\-?)*[a-z\d]+\.)+([a-z]{2,})+$/i.test(val);
+          }
+          return true;
         }
       };
       
