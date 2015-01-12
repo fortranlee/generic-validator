@@ -1,6 +1,6 @@
 {
   "name": "generic-validator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A generic JavaScript Form Validator",
   "main": "index.js",
   "scripts": {
