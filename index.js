@@ -175,8 +175,7 @@
       };
       
       Validator.prototype.getMessage = function(msgTmpl, varsObj){
-        return msgTmpl.replace(/@[_\w\$]{1}[0-9\w_\$]*/g, function(_var_){
-          _var_ = _var_.substr(1);
+        return msgTmpl.replace(/@([_\w\$]{1}[0-9\w_\$]*)/g, function(match, _var_){
           return varsObj[_var_];
         });
       };
