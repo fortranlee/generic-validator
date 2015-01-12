@@ -128,6 +128,13 @@
               return unSortedValidations.indexOf(method) > -1;
             });
             
+            if(sortedValidations[0] === 'required'
+                && config.validations['required'] === false
+                && !!value === false){
+              results.push({field: field, label: config.label, value: value});
+              continue;
+            }
+            
             var breakInside = false;
             for(var j = 0, length1 = sortedValidations.length; j < length1; j++){
               var validation = sortedValidations[j];
