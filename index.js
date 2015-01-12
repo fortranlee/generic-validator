@@ -236,7 +236,7 @@
         }
       };
       
-      exports.isCNMobile = {
+      exports.isEmail = {
         pr: 2,
         msg: '@label必须是合法的Email地址',
         fn: function(val, expected){
